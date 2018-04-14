@@ -1,0 +1,66 @@
+<html>
+<head>
+  <title>Rock Paper Scissors</title>
+</head>
+<body>
+  <script>
+  function computerPlay() {
+    var moves = ['ROCK', 'PAPER', 'SCISSORS'];
+    action = moves[Math.floor(Math.random() * moves.length)];
+    return action;
+  }
+
+  function playRound(playerSelection, computerSelection) {
+    if (playerSelection.toUpperCase() == 'ROCK' && computerSelection == 'SCISSORS' ||
+        playerSelection.toUpperCase() == 'SCISSORS' && computerSelection == 'PAPER' ||
+        playerSelection.toUpperCase() == 'PAPER' && computerSelection == 'ROCK') {
+          console.log(`You win! ${playerSelection} beats ${computerSelection}.`);
+          return 1;
+        } else if (playerSelection.toUpperCase() == computerSelection.toUpperCase()) {
+          console.log(`Tie!`);
+          return 0;
+        } else {
+          console.log(`You lose! ${computerSelection} beats ${playerSelection}.`);
+          return -1;
+        }
+
+  }
+
+  function game() {
+    var round = 1;
+    var playerWin = 0;
+    var computerWin = 0;
+    while (round < 6) {
+      console.log(`Round ${round}`)
+      console.log(`Player Wins = ${playerWin}`)
+      console.log(`Computer Wins = ${computerWin}`)
+      playerSelection = window.prompt('Rock Paper or Scissors?')
+      computerSelection = computerPlay()
+      if (playRound(playerSelection, computerSelection) == 1) {
+        round++
+        playerWin++
+      } else if (playRound(playerSelection, computerSelection) == 0) {
+        round++
+      } else if (playRound(playerSelection, computerSelection) == -1) {
+        round++
+        computerWin++
+      }
+    }
+    if (playerWin > computerWin) {
+      console.log(`Player Wins = ${playerWin}`)
+      console.log(`Computer Wins = ${computerWin}`)
+      console.log('You Win! Congratulations!')
+    } else if (playerWin == computerWin) {
+      console.log(`Player Wins = ${playerWin}`)
+      console.log(`Computer Wins = ${computerWin}`)
+      console.log('You Tied with the Computer!')
+    } else {
+      console.log(`Player Wins = ${playerWin}`)
+      console.log(`Computer Wins = ${computerWin}`)
+      console.log('You Lost! Better luck next time!')
+    }
+
+  }
+  </script>
+</body>
+</html>
